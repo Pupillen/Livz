@@ -67,17 +67,26 @@ ros::Publisher& Livz::getPublisher(const std::string& topic_name) {
     PublisherInfo &publisher_info = getInstance().publishers_[topic_name];
     ros::Publisher& publisher = publisher_info.publisher;
     if (publisher.getTopic().empty()) {
-        publisher_info.publisher = getInstance().nh_.advertise<T>(topic_name, 10000);
+        publisher_info.publisher = getInstance().nh_.advertise<T>(topic_name, 100000);
         publisher_info.type      = typeid(T).name();
         double wait_time = 0.0;
-        while (publisher.getNumSubscribers() < 1) {
-            Livz::Delay(100);
-            wait_time += 0.1;
-            if(wait_time > 2.0){
+        // while (publisher.getNumSubscribers() < 1) {
+        //     Livz::Delay(100);
+        //     wait_time += 0.1;
+        //     if(wait_time > 2.0){
+        //         PRINT_COLOR_TEXT("[Livz] 话题 \"" << topic_name << "\" 似乎没有订阅者，请检查rviz配置。\n"
+        //          << "[Livz] Looks like Topic \"" << topic_name << "\" is not subscribed by any subscriber. Check rviz config.",  YELLOW);
+        //         break;
+        //     }
+        // } // 解决第一次发布看不到的bug
+        if (publisher.getNumSubscribers() < 1) {//美团规划这边暂时不延时debug用
+            // Livz::Delay(100);
+            // wait_time += 0.1;
+            // if(wait_time > 2.0){
                 PRINT_COLOR_TEXT("[Livz] 话题 \"" << topic_name << "\" 似乎没有订阅者，请检查rviz配置。\n"
                  << "[Livz] Looks like Topic \"" << topic_name << "\" is not subscribed by any subscriber. Check rviz config.",  YELLOW);
-                break;
-            }
+                // break;
+            // }
         } // 解决第一次发布看不到的bug
     }
     return publisher;

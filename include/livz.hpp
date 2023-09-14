@@ -125,6 +125,8 @@ public:
     static void DelayMicroseconds(const double microseconds);
     static void DelayAccordingtoAnimate(const LAnimateParam ani_param);
 
+
+
 public:
     /**
      * @brief 自定义着色器类型。接受位置返回颜色(r,g,b,a)
@@ -302,13 +304,14 @@ public:
                              std::string frame_id = CONFIG::default_frame_id,
                              int id = 1251)
     {
-        ros::Publisher &publisher = getInstance().getPublisher(topic);
+        ros::Publisher &publisher = getInstance().getPublisher<visualization_msgs::MarkerArray>(topic);
         visualization_msgs::Marker clear_previous_msg;
         clear_previous_msg.action = visualization_msgs::Marker::DELETEALL;
+        clear_previous_msg.header.frame_id=frame_id;
         visualization_msgs::Marker path_msg;
         path_msg.type = visualization_msgs::Marker::LINE_STRIP;
         path_msg.action = visualization_msgs::Marker::ADD;
-        path_msg.header.frame_id = "world";
+        path_msg.header.frame_id = frame_id;
         path_msg.id = 0;
         setMarkerPose(path_msg, 0, 0, 0);
         setMarkerScale(path_msg, scale, scale, scale);
@@ -337,15 +340,16 @@ public:
         publisher.publish(path_list_msg);
     }
 
-    template <class BALLS, class TOPIC>
-    static void visualize_balls(const BALLS &balls,
-                                const TOPIC &topic,
+    // template <class TOPIC>
+    template <class BALLS>
+    static void visualize_balls(const BALLS&balls,
+                                const std::string &topic,
                                 const Eigen::Vector4d color = LCOLOR::BLUE,
                                 double opacity = -1.0,
                                 std::string frame_id = CONFIG::default_frame_id,
                                 int id = 1251)
     {
-        ros::Publisher &publisher = getInstance().getPublisher(topic);
+        ros::Publisher &publisher = getInstance().getPublisher<visualization_msgs::MarkerArray>(topic);
         visualization_msgs::Marker marker;
         marker.header.frame_id = frame_id;
         marker.type = visualization_msgs::Marker::SPHERE;
@@ -371,6 +375,7 @@ public:
         }
         publisher.publish(marker_array);
     }
+   
 
     static void drawOneCylinder(const std::string &topic_name,
                                 Eigen::Vector3d position,
