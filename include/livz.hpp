@@ -149,7 +149,7 @@ public:
     #define addUpdater(name, func) AddUpdater(name, func, __FILE__, __LINE__);
     #define removeUpdater(name) RemoveUpdater(name, __FILE__, __LINE__);
 
-    static void init(ros::NodeHandle& nh);
+    static void init(const ros::NodeHandle& nh);
 
     /**
      * @brief 旋转一组点绕Z轴旋转给定的角度。
@@ -453,6 +453,47 @@ public:
                             double opacity = -1.0,
                             std::string frame_id = CONFIG::default_frame_id,
                             int id = 154514);
+
+    template <typename PAIRLINE>
+    static void drawpairline( const std::string& topic_name,const PAIRLINE& pairline,
+                            Eigen::Vector4d color = LCOLOR::YELLOW,
+                            double stroke_width    = 0.1,
+                            double opacity = -1.0,
+                            std::string frame_id = CONFIG::default_frame_id,
+                            int id = 14514)
+                            {
+        ros::Publisher& publisher = Livz::getInstance().getPublisher<visualization_msgs::Marker>(topic_name);
+        visualization_msgs::Marker marker;
+        marker.header.frame_id = frame_id;
+        marker.type = visualization_msgs::Marker::LINE_LIST;
+        marker.action = visualization_msgs::Marker::ADD;
+        marker.pose.position.x =0;
+        marker.pose.position.y =0;
+        marker.pose.position.z =0;
+        marker.pose.orientation.w = 1;
+        marker.pose.orientation.x = 0;
+        marker.pose.orientation.y = 0;
+        marker.pose.orientation.z = 0;
+        marker.scale.x = stroke_width;
+        marker.scale.y = stroke_width;
+        marker.scale.z = stroke_width;
+        marker.color.r = color[0];
+        marker.color.g = color[1];
+        marker.color.b = color[2];
+        marker.color.a = (opacity >= 0.0 && opacity <= 1.0) ? opacity : color(3);
+        marker.color.a = (marker.color.a >= 0.0 && marker.color.a <= 0.1) ? 0 : marker.color.a;
+        marker.points.resize(2 * pairline.size());
+        for (size_t i = 0; i < pairline.size(); ++i) {
+            marker.points[2 * i + 0].x = pairline[i].first[0];
+            marker.points[2 * i + 0].y = pairline[i].first[1];
+            marker.points[2 * i + 0].z = pairline[i].first[2];
+            marker.points[2 * i + 1].x = pairline[i].second[0];
+            marker.points[2 * i + 1].y = pairline[i].second[1];
+            marker.points[2 * i + 1].z = pairline[i].second[2];
+        }
+        publisher.publish(marker);
+    }
+
 
     /**
      * @brief 绘制一个2D圆。
