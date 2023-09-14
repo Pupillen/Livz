@@ -1,7 +1,7 @@
 // Copyright (c) [2023] [Lantern]
-// 
+//
 // This file is part of [Livz]
-// 
+//
 // This project is licensed under the MIT License.
 // See LICENSE.txt for details.
 #ifndef LROSVIS_LIB_H
@@ -31,7 +31,7 @@
 #define LPARAMS(...) std::make_tuple(__VA_ARGS__)
 
 #define SURF_FUNC(obj) std::function<double(double, double)>(obj)
-#define SURFFUNC_FROM_MEMBER(func) [this](double u,double v) -> double { return this->func(u,v); }
+#define SURFFUNC_FROM_MEMBER(func) [this](double u, double v) -> double { return this->func(u, v); }
 
 #define PARACURVE_FUNC(obj) std::function<Eigen::Vector3d(double)>(obj)
 #define PARACURVEFUNC_FROM_MEMBER(func) [this](double t) -> Eigen::Vector3d { return this->func(t); }
@@ -45,74 +45,76 @@
 #define VECTOR_FIELD(obj) std::function<Eigen::Vector3d(Eigen::Vector3d)>(obj)
 #define VECTORFIELD_FROM_MEMBER(func) [this](Eigen::Vector3d p) -> Eigen::Vector3d { return this->func(p); }
 
-
-
-
-namespace LCOLOR {
-    const Eigen::Vector4d RED(1.0, 0.0, 0.0, 1.0);     //红色，不透明
-    const Eigen::Vector4d GREEN(0.0, 1.0, 0.0, 1.0);   //绿色，不透明
-    const Eigen::Vector4d BLUE(0.0, 0.0, 1.0, 1.0);    //蓝色，不透明
-    const Eigen::Vector4d YELLOW(1.0, 1.0, 0.0, 1.0);  //黄色，不透明
-    const Eigen::Vector4d CYAN(0.0, 1.0, 1.0, 1.0);    //青色，不透明
-    const Eigen::Vector4d MAGENTA(1.0, 0.0, 1.0, 1.0); //洋红，不透明
-    const Eigen::Vector4d WHITE(1.0, 1.0, 1.0, 1.0);   //白色，不透明
-    const Eigen::Vector4d BLACK(0.0, 0.0, 0.0, 1.0);   //黑色，不透明
-    const Eigen::Vector4d GREY(0.5, 0.5, 0.5, 1.0);    //灰色，不透明
-    const Eigen::Vector4d ORANGE(1.0, 0.5, 0.0, 1.0);  //橙色，不透明
-    const Eigen::Vector4d BROWN(0.6, 0.4, 0.2, 1.0);   //棕色，不透明
-    const Eigen::Vector4d PINK(1.0, 0.8, 0.8, 1.0);    //粉红，不透明
-    const Eigen::Vector4d PURPLE(0.5, 0.0, 0.5, 1.0);  //紫色，不透明
-    const Eigen::Vector4d INDIGO(0.3, 0.0, 0.5, 1.0);  //靛蓝，不透明
-    const Eigen::Vector4d VIOLET(0.9, 0.5, 0.9, 1.0);  //紫罗兰，不透明
-    const Eigen::Vector4d LIME(0.7, 1.0, 0.3, 1.0);    //酸橙色，不透明
-    const Eigen::Vector4d GOLD(1.0, 0.8, 0.0, 1.0);    //金色，不透明
-    const Eigen::Vector4d SILVER(0.8, 0.8, 0.8, 1.0);  //银色，不透明
-    const Eigen::Vector4d CORAL(1.0, 0.5, 0.3, 1.0);   //珊瑚色，不透明
-    const Eigen::Vector4d BEIGE(0.6, 0.6, 0.4, 1.0);   //米色，不透明
-    const Eigen::Vector4d MINT(0.3, 1.0, 0.6, 1.0);    //薄荷色，不透明
-    const Eigen::Vector4d OLIVE(0.5, 0.5, 0.0, 1.0);   //橄榄色，不透明
-    const Eigen::Vector4d APRICOT(0.9, 0.6, 0.5, 1.0); //杏色，不透明
-    const Eigen::Vector4d NAVY(0.0, 0.0, 0.5, 1.0);    //海军蓝，不透明
-    const Eigen::Vector4d LAVENDER(0.7, 0.5, 0.8, 1.0);//薰衣草紫，不透明
-    const Eigen::Vector4d TURQUOISE(0.3, 0.9, 0.8, 1.0);//绿松石色，不透明
-    const Eigen::Vector4d TAN(0.8, 0.7, 0.6, 1.0);     //棕褐色，不透明
-    const Eigen::Vector4d TEAL(0.0, 0.5, 0.5, 1.0);    //鸭翅蓝，不透明
-    const Eigen::Vector4d COFFEE(0.6, 0.3, 0.0, 1.0);  //咖啡色，不透明
-    const Eigen::Vector4d ROSE(1.0, 0.0, 0.5, 1.0);    //玫瑰色，不透明
-    const Eigen::Vector4d SIENNA(0.6, 0.3, 0.2, 1.0);  //赭色，不透明
-    const Eigen::Vector4d PEACH(1.0, 0.9, 0.7, 1.0);   //桃色，不透明
-    const Eigen::Vector4d MAROON(0.5, 0.0, 0.0, 1.0);  //褐红色，不透明
-    const Eigen::Vector4d AQUA(0.0, 1.0, 1.0, 1.0);    //水绿色，不透明
-    const Eigen::Vector4d SALMON(0.9, 0.5, 0.5, 1.0);  //鲑鱼色，不透明
-    const Eigen::Vector4d PLUM(0.9, 0.7, 0.9, 1.0);    //李子色，不透明
-    const Eigen::Vector4d ORCHID(0.9, 0.4, 0.7, 1.0);  //兰花色，不透明
-    const Eigen::Vector4d CHERRY(0.9, 0.0, 0.1, 1.0);  //樱桃红，不透明
-    const Eigen::Vector4d AZURE(0.0, 0.5, 1.0, 1.0);   //天蓝色，不透明
-    const Eigen::Vector4d GRAY(0.5, 0.5, 0.5, 1.0);    //灰色，不透明
-    const Eigen::Vector4d RASPBERRY(0.9, 0.0, 0.4, 1.0);//树莓色，不透明
-    const Eigen::Vector4d EMERALD(0.3, 0.8, 0.6, 1.0); //绿宝石色，不透明
-    const Eigen::Vector4d CHOCOLATE(0.8, 0.5, 0.3, 1.0);//巧克力色，不透明
-    const Eigen::Vector4d AMBER(1.0, 0.8, 0.0, 1.0);   //琥珀色，不透明
-    const Eigen::Vector4d CREAM(1.0, 0.9, 0.8, 1.0);   //奶油色，不透明
-    const Eigen::Vector4d CRIMSON(0.9, 0.1, 0.1, 1.0); //深红色，不透明
-    const Eigen::Vector4d HONEY(1.0, 0.9, 0.6, 1.0);   //蜜色，不透明
+namespace LCOLOR
+{
+    const Eigen::Vector4d RED(1.0, 0.0, 0.0, 1.0);       // 红色，不透明
+    const Eigen::Vector4d GREEN(0.0, 1.0, 0.0, 1.0);     // 绿色，不透明
+    const Eigen::Vector4d BLUE(0.0, 0.0, 1.0, 1.0);      // 蓝色，不透明
+    const Eigen::Vector4d YELLOW(1.0, 1.0, 0.0, 1.0);    // 黄色，不透明
+    const Eigen::Vector4d CYAN(0.0, 1.0, 1.0, 1.0);      // 青色，不透明
+    const Eigen::Vector4d MAGENTA(1.0, 0.0, 1.0, 1.0);   // 洋红，不透明
+    const Eigen::Vector4d WHITE(1.0, 1.0, 1.0, 1.0);     // 白色，不透明
+    const Eigen::Vector4d BLACK(0.0, 0.0, 0.0, 1.0);     // 黑色，不透明
+    const Eigen::Vector4d GREY(0.5, 0.5, 0.5, 1.0);      // 灰色，不透明
+    const Eigen::Vector4d ORANGE(1.0, 0.5, 0.0, 1.0);    // 橙色，不透明
+    const Eigen::Vector4d BROWN(0.6, 0.4, 0.2, 1.0);     // 棕色，不透明
+    const Eigen::Vector4d PINK(1.0, 0.8, 0.8, 1.0);      // 粉红，不透明
+    const Eigen::Vector4d PURPLE(0.5, 0.0, 0.5, 1.0);    // 紫色，不透明
+    const Eigen::Vector4d INDIGO(0.3, 0.0, 0.5, 1.0);    // 靛蓝，不透明
+    const Eigen::Vector4d VIOLET(0.9, 0.5, 0.9, 1.0);    // 紫罗兰，不透明
+    const Eigen::Vector4d LIME(0.7, 1.0, 0.3, 1.0);      // 酸橙色，不透明
+    const Eigen::Vector4d GOLD(1.0, 0.8, 0.0, 1.0);      // 金色，不透明
+    const Eigen::Vector4d SILVER(0.8, 0.8, 0.8, 1.0);    // 银色，不透明
+    const Eigen::Vector4d CORAL(1.0, 0.5, 0.3, 1.0);     // 珊瑚色，不透明
+    const Eigen::Vector4d BEIGE(0.6, 0.6, 0.4, 1.0);     // 米色，不透明
+    const Eigen::Vector4d MINT(0.3, 1.0, 0.6, 1.0);      // 薄荷色，不透明
+    const Eigen::Vector4d OLIVE(0.5, 0.5, 0.0, 1.0);     // 橄榄色，不透明
+    const Eigen::Vector4d APRICOT(0.9, 0.6, 0.5, 1.0);   // 杏色，不透明
+    const Eigen::Vector4d NAVY(0.0, 0.0, 0.5, 1.0);      // 海军蓝，不透明
+    const Eigen::Vector4d LAVENDER(0.7, 0.5, 0.8, 1.0);  // 薰衣草紫，不透明
+    const Eigen::Vector4d TURQUOISE(0.3, 0.9, 0.8, 1.0); // 绿松石色，不透明
+    const Eigen::Vector4d TAN(0.8, 0.7, 0.6, 1.0);       // 棕褐色，不透明
+    const Eigen::Vector4d TEAL(0.0, 0.5, 0.5, 1.0);      // 鸭翅蓝，不透明
+    const Eigen::Vector4d COFFEE(0.6, 0.3, 0.0, 1.0);    // 咖啡色，不透明
+    const Eigen::Vector4d ROSE(1.0, 0.0, 0.5, 1.0);      // 玫瑰色，不透明
+    const Eigen::Vector4d SIENNA(0.6, 0.3, 0.2, 1.0);    // 赭色，不透明
+    const Eigen::Vector4d PEACH(1.0, 0.9, 0.7, 1.0);     // 桃色，不透明
+    const Eigen::Vector4d MAROON(0.5, 0.0, 0.0, 1.0);    // 褐红色，不透明
+    const Eigen::Vector4d AQUA(0.0, 1.0, 1.0, 1.0);      // 水绿色，不透明
+    const Eigen::Vector4d SALMON(0.9, 0.5, 0.5, 1.0);    // 鲑鱼色，不透明
+    const Eigen::Vector4d PLUM(0.9, 0.7, 0.9, 1.0);      // 李子色，不透明
+    const Eigen::Vector4d ORCHID(0.9, 0.4, 0.7, 1.0);    // 兰花色，不透明
+    const Eigen::Vector4d CHERRY(0.9, 0.0, 0.1, 1.0);    // 樱桃红，不透明
+    const Eigen::Vector4d AZURE(0.0, 0.5, 1.0, 1.0);     // 天蓝色，不透明
+    const Eigen::Vector4d GRAY(0.5, 0.5, 0.5, 1.0);      // 灰色，不透明
+    const Eigen::Vector4d RASPBERRY(0.9, 0.0, 0.4, 1.0); // 树莓色，不透明
+    const Eigen::Vector4d EMERALD(0.3, 0.8, 0.6, 1.0);   // 绿宝石色，不透明
+    const Eigen::Vector4d CHOCOLATE(0.8, 0.5, 0.3, 1.0); // 巧克力色，不透明
+    const Eigen::Vector4d AMBER(1.0, 0.8, 0.0, 1.0);     // 琥珀色，不透明
+    const Eigen::Vector4d CREAM(1.0, 0.9, 0.8, 1.0);     // 奶油色，不透明
+    const Eigen::Vector4d CRIMSON(0.9, 0.1, 0.1, 1.0);   // 深红色，不透明
+    const Eigen::Vector4d HONEY(1.0, 0.9, 0.6, 1.0);     // 蜜色，不透明
 }
 
-namespace POLYGON_TYPE{
-    const int TYPE_MARKER  = 1;
+namespace POLYGON_TYPE
+{
+    const int TYPE_MARKER = 1;
     const int TYPE_POLYGON = 2;
 }
 
-namespace CONFIG{
+namespace CONFIG
+{
     extern std::string default_frame_id;
 }
 
-typedef struct PublisherInfo {
-  ros::Publisher publisher;
-  std::string type;
+typedef struct PublisherInfo
+{
+    ros::Publisher publisher;
+    std::string type;
 } PublisherInfo;
 
-class Livz {
+class Livz
+{
 
 public:
     /**
@@ -123,13 +125,11 @@ public:
     static void DelayMicroseconds(const double microseconds);
     static void DelayAccordingtoAnimate(const LAnimateParam ani_param);
 
-
 public:
     /**
      * @brief 自定义着色器类型。接受位置返回颜色(r,g,b,a)
      */
     typedef std::function<Eigen::Vector3d(const Eigen::Vector3d)> ShaderFunction;
-
 
     /**
      * @brief 参数化曲线。
@@ -139,17 +139,17 @@ public:
     /**
      * @brief 参数化曲面。
      */
-    typedef std::function<double(const double, const double )> ParametricSurfaceFunction;
+    typedef std::function<double(const double, const double)> ParametricSurfaceFunction;
 
     /**
      * @brief 向量场。
      */
     typedef std::function<Eigen::Vector3d(const Eigen::Vector3d)> VectorField;
 
-    #define addUpdater(name, func) AddUpdater(name, func, __FILE__, __LINE__);
-    #define removeUpdater(name) RemoveUpdater(name, __FILE__, __LINE__);
+#define addUpdater(name, func) AddUpdater(name, func, __FILE__, __LINE__);
+#define removeUpdater(name) RemoveUpdater(name, __FILE__, __LINE__);
 
-    static void init(const ros::NodeHandle& nh);
+    static void init(const ros::NodeHandle &nh);
 
     /**
      * @brief 旋转一组点绕Z轴旋转给定的角度。
@@ -157,7 +157,7 @@ public:
      * @param rot_center Eigen::Vector3d - 旋转中心。
      * @param angle_phi double - 旋转的角度（弧度）。
      */
-    static void rotatePointsSO1( std::vector<Eigen::Vector3d>& ori_points , const Eigen::Vector3d& rot_center, double angle_phi );
+    static void rotatePointsSO1(std::vector<Eigen::Vector3d> &ori_points, const Eigen::Vector3d &rot_center, double angle_phi);
 
     /**
      * @brief 设置多边形显示模式
@@ -169,37 +169,94 @@ public:
      * @brief 设置默认参考坐标系
      * @param default_frame_id std::string - 参考坐标系
      */
-    static void setDefaultFrameId(const std::string& default_frame_id);
+    static void setDefaultFrameId(const std::string &default_frame_id);
 
-
-
-    template <typename Func, typename Params>
-    static void createAnimate(const LAnimateParam& ani_param , Func func, Params params1, Params params2) { 
-        // std::cout<<"create animate"<<std::endl;
-        std::tuple topic_element = std::make_tuple(ani_param.topic_name_);
-        std::tuple params1_f = std::tuple_cat( topic_element , params1 );
-        std::tuple params2_f = std::tuple_cat( topic_element , params2 );
-
-
-        std::shared_ptr<LAnimateTask<Func, decltype(params1_f)>> task = std::make_shared<LAnimateTask<Func, decltype(params1_f)>>(ani_param, func, params1_f, params2_f);
-        getInstance().animate_tasks_.emplace_back( task );
+    static void setMarkerColor(visualization_msgs::Marker &marker,
+                               const Eigen::Vector4d& color)
+    {
+        marker.color.a = color[3];
+        marker.color.r = color[0];
+        marker.color.g = color[1];
+        marker.color.b = color[2];
+    }
+    static void setMarkerColor(visualization_msgs::Marker &marker,
+                               double a,
+                               double r,
+                               double g,
+                               double b)
+    {
+        marker.color.a = a;
+        marker.color.r = r;
+        marker.color.g = g;
+        marker.color.b = b;
     }
 
-    static void AddUpdater( const std::string& updater_name, std::function<bool(const double)> update_function ,
-                            const std::string& file = "Use addUpdater rather than AddUpdater to get more information", 
-                            int line = -1);
+    static void setMarkerScale(visualization_msgs::Marker &marker,
+                               const double &x,
+                               const double &y,
+                               const double &z)
+    {
+        marker.scale.x = x;
+        marker.scale.y = y;
+        marker.scale.z = z;
+    }
 
-    static void RemoveUpdater( const std::string& updater_name,
-                               const std::string& file = "Use removeUpdater rather than RemoveUpdater to get more information", 
-                               int line = -1);
+    static void setMarkerPose(visualization_msgs::Marker &marker,
+                              const double &x,
+                              const double &y,
+                              const double &z)
+    {
+        marker.pose.position.x = x;
+        marker.pose.position.y = y;
+        marker.pose.position.z = z;
+        marker.pose.orientation.w = 1;
+        marker.pose.orientation.x = 0;
+        marker.pose.orientation.y = 0;
+        marker.pose.orientation.z = 0;
+    }
+    template <class ROTATION>
+    static void setMarkerPose(visualization_msgs::Marker &marker,
+                              const double &x,
+                              const double &y,
+                              const double &z,
+                              const ROTATION &R)
+    {
+        marker.pose.position.x = x;
+        marker.pose.position.y = y;
+        marker.pose.position.z = z;
+        Eigen::Quaterniond r(R);
+        marker.pose.orientation.w = r.w();
+        marker.pose.orientation.x = r.x();
+        marker.pose.orientation.y = r.y();
+        marker.pose.orientation.z = r.z();
+    }
+
+    template <typename Func, typename Params>
+    static void createAnimate(const LAnimateParam &ani_param, Func func, Params params1, Params params2)
+    {
+        // std::cout<<"create animate"<<std::endl;
+        std::tuple topic_element = std::make_tuple(ani_param.topic_name_);
+        std::tuple params1_f = std::tuple_cat(topic_element, params1);
+        std::tuple params2_f = std::tuple_cat(topic_element, params2);
+
+        std::shared_ptr<LAnimateTask<Func, decltype(params1_f)>> task = std::make_shared<LAnimateTask<Func, decltype(params1_f)>>(ani_param, func, params1_f, params2_f);
+        getInstance().animate_tasks_.emplace_back(task);
+    }
+
+    static void AddUpdater(const std::string &updater_name, std::function<bool(const double)> update_function,
+                           const std::string &file = "Use addUpdater rather than AddUpdater to get more information",
+                           int line = -1);
+
+    static void RemoveUpdater(const std::string &updater_name,
+                              const std::string &file = "Use removeUpdater rather than RemoveUpdater to get more information",
+                              int line = -1);
 
     /**
      * @brief 清除某个话题的所有已发布可视化内容。
      * @param topic_name string - 发布的主题名称。
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      */
-    static void clearAll(const std::string& topic_name ,const std::string& frame_id = CONFIG::default_frame_id);
-
+    static void clearAll(const std::string &topic_name, const std::string &frame_id = CONFIG::default_frame_id);
 
     /**
      * @brief 绘制一个点。
@@ -211,14 +268,14 @@ public:
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      * @param id int - 点的标识符（默认为114514）。
      */
-    static void drawOnePoint( const std::string& topic_name, 
-                               const Eigen::Vector3d& position, 
-                               double size, 
-                               Eigen::Vector4d color = LCOLOR::YELLOW, 
-                               double opacity = -1.0, 
-                               std::string frame_id = CONFIG::default_frame_id, 
-                               int id = 114514) ;
-    
+    static void drawOnePoint(const std::string &topic_name,
+                             const Eigen::Vector3d &position,
+                             double size,
+                             Eigen::Vector4d color = LCOLOR::YELLOW,
+                             double opacity = -1.0,
+                             std::string frame_id = CONFIG::default_frame_id,
+                             int id = 114514);
+
     /**
      * @brief 绘制一个球体。
      * @param topic_name string - 发布的主题名称。
@@ -229,26 +286,93 @@ public:
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      * @param id int - 球体标识符（默认为124514）。
      */
-    static void drawOneSphere(const std::string& topic_name,
-                       const Eigen::Vector3d& position,
-                       double radius,
-                       Eigen::Vector4d color = LCOLOR::YELLOW,
-                       double opacity = -1.0,
-                       std::string frame_id = CONFIG::default_frame_id,
-                       int id = 124514);
-    
-    /**
-     * @brief 绘制圆柱体。
-     * @param topic_name string - 发布的主题名称。
-     * @param position Eigen::Vector3d - 圆柱体中心的位置（x, y, z坐标）。
-     * @param radius double - 圆柱体的半径。
-     * @param height double - 圆柱体的高度。
-     * @param color Eigen::Vector4d - 圆柱体颜色（默认为金色）。
-     * @param opacity double - 球体不透明度（默认为-1.0，使用颜色中的alpha值）。
-     * @param frame_id string - 参考坐标系（默认为"/map"）。
-     * @param id int - 圆柱体的标识号（默认为 104514）。
-     */
-    static void drawOneCylinder(const std::string& topic_name,
+    static void drawOneSphere(const std::string &topic_name,
+                              const Eigen::Vector3d &position,
+                              double radius,
+                              Eigen::Vector4d color = LCOLOR::YELLOW,
+                              double opacity = -1.0,
+                              std::string frame_id = CONFIG::default_frame_id,
+                              int id = 124514);
+
+    template <class TRAJLIST, class TOPIC>
+   static  void visualize_traj_list(const TRAJLIST &traj_list, const TOPIC &topic,
+                             const Eigen::Vector4d color = LCOLOR::BLUE,
+                             double scale = 0.1,
+                             double opacity = -1.0,
+                             std::string frame_id = CONFIG::default_frame_id,
+                             int id = 1251)
+    {
+        ros::Publisher &publisher = getInstance().getPublisher(topic);
+        visualization_msgs::Marker clear_previous_msg;
+        clear_previous_msg.action = visualization_msgs::Marker::DELETEALL;
+        visualization_msgs::Marker path_msg;
+        path_msg.type = visualization_msgs::Marker::LINE_STRIP;
+        path_msg.action = visualization_msgs::Marker::ADD;
+        path_msg.header.frame_id = "world";
+        path_msg.id = 0;
+        setMarkerPose(path_msg, 0, 0, 0);
+        setMarkerScale(path_msg, scale, scale, scale);
+        visualization_msgs::MarkerArray path_list_msg;
+        path_list_msg.markers.reserve(1 + traj_list.size());
+        path_list_msg.markers.push_back(clear_previous_msg);
+        double a_step = 0.8 / traj_list.size();
+        double a = 1.0;
+        geometry_msgs::Point p_msg;
+        for (const auto &traj : traj_list)
+        {
+            setMarkerColor(path_msg, color);
+            // a = a + a_step;
+            path_msg.points.clear();
+            for (double t = 0; t < traj.getTotalDuration(); t += 0.01)
+            {
+                auto p = traj.getPos(t);
+                p_msg.x = p.x();
+                p_msg.y = p.y();
+                p_msg.z = p.z();
+                path_msg.points.push_back(p_msg);
+            }
+            path_list_msg.markers.push_back(path_msg);
+            path_msg.id += 1;
+        }
+        publisher.publish(path_list_msg);
+    }
+
+    template <class BALLS, class TOPIC>
+    static void visualize_balls(const BALLS &balls,
+                                const TOPIC &topic,
+                                const Eigen::Vector4d color = LCOLOR::BLUE,
+                                double opacity = -1.0,
+                                std::string frame_id = CONFIG::default_frame_id,
+                                int id = 1251)
+    {
+        ros::Publisher &publisher = getInstance().getPublisher(topic);
+        visualization_msgs::Marker marker;
+        marker.header.frame_id = frame_id;
+        marker.type = visualization_msgs::Marker::SPHERE;
+        marker.action = visualization_msgs::Marker::ADD;
+        marker.id = 0;
+        marker.color.r = color[0];
+        marker.color.g = color[1];
+        marker.color.b = color[2];
+        marker.color.a = (opacity >= 0.0 && opacity <= 1.0) ? opacity : color(3);
+        marker.color.a = (marker.color.a >= 0.0 && marker.color.a <= 0.1) ? 0 : marker.color.a;
+        visualization_msgs::MarkerArray marker_array;
+        marker_array.markers.reserve(balls.size() + 1);
+        marker.action = visualization_msgs::Marker::DELETEALL;
+        marker_array.markers.push_back(marker);
+        marker.action = visualization_msgs::Marker::ADD;
+        for (const auto &ball : balls)
+        {
+            setMarkerPose(marker, ball.center[0], ball.center[1], ball.center[2]);
+            auto d = 2 * ball.radius;
+            setMarkerScale(marker, d, d, d);
+            marker_array.markers.push_back(marker);
+            marker.id++;
+        }
+        publisher.publish(marker_array);
+    }
+
+    static void drawOneCylinder(const std::string &topic_name,
                                 Eigen::Vector3d position,
                                 double radius,
                                 double height,
@@ -267,14 +391,14 @@ public:
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      * @param id int - 立方体的标识号（默认为 204514）。
      */
-    static void drawOneCube(const std::string& topic_name,
-                        Eigen::Vector3d position,
-                        Eigen::Vector3d scale,
-                        Eigen::Vector4d color = LCOLOR::GOLD,
-                        double opacity = -1.0,
-                        std::string frame_id = CONFIG::default_frame_id,
-                        int id = 94514);
-    
+    static void drawOneCube(const std::string &topic_name,
+                            Eigen::Vector3d position,
+                            Eigen::Vector3d scale,
+                            Eigen::Vector4d color = LCOLOR::GOLD,
+                            double opacity = -1.0,
+                            std::string frame_id = CONFIG::default_frame_id,
+                            int id = 94514);
+
     /**
      * @brief 绘制箭头。
      * @param topic_name string - 发布的主题名称。
@@ -286,14 +410,14 @@ public:
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      * @param id int - 箭头的标识号（默认为 845146）。
      */
-    static void drawOneArrow(const std::string& topic_name,
-                            Eigen::Vector3d start_point,
-                            Eigen::Vector3d end_point,
-                            Eigen::Vector3d scale = Eigen::Vector3d(0.1, 0.3,0.3),
-                            Eigen::Vector4d color = LCOLOR::RED,
-                            double opacity = -1.0,
-                            std::string frame_id = CONFIG::default_frame_id,
-                            int id = 84514);
+    static void drawOneArrow(const std::string &topic_name,
+                             Eigen::Vector3d start_point,
+                             Eigen::Vector3d end_point,
+                             Eigen::Vector3d scale = Eigen::Vector3d(0.1, 0.3, 0.3),
+                             Eigen::Vector4d color = LCOLOR::RED,
+                             double opacity = -1.0,
+                             std::string frame_id = CONFIG::default_frame_id,
+                             int id = 84514);
 
     /**
      * @brief 绘制一组箭头。
@@ -307,14 +431,14 @@ public:
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      * @param id int - 箭头的标识号（默认值54514）。
      */
-    static void drawArrows(const std::string& topic_name,
-                      const std::vector<Eigen::Vector3d>& start_points,
-                      const std::vector<Eigen::Vector3d>& end_points,
-                      const std::vector<Eigen::Vector3d>& scales,
-                      const Eigen::Vector4d& color = LCOLOR::RED,
-                      double opacity = -1.0,
-                      const std::string& frame_id = CONFIG::default_frame_id,
-                      int id = 54514);
+    static void drawArrows(const std::string &topic_name,
+                           const std::vector<Eigen::Vector3d> &start_points,
+                           const std::vector<Eigen::Vector3d> &end_points,
+                           const std::vector<Eigen::Vector3d> &scales,
+                           const Eigen::Vector4d &color = LCOLOR::RED,
+                           double opacity = -1.0,
+                           const std::string &frame_id = CONFIG::default_frame_id,
+                           int id = 54514);
 
     /**
      * @brief 绘制一组具有不同颜色的箭头。
@@ -328,16 +452,15 @@ public:
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      * @param id int - 箭头的标识号（默认值74514）。
      */
-    static void drawArrowsWithColors(const std::string& topic_name,
-                                    const std::vector<Eigen::Vector3d>& start_points,
-                                    const std::vector<Eigen::Vector3d>& end_points,
-                                    const std::vector<Eigen::Vector3d>& scales,
-                                    const std::vector<Eigen::Vector4d>& colors,
-                                    double opacity = -1.0,
-                                    const std::string& frame_id = CONFIG::default_frame_id,
-                                    int id = 74514);
+    static void drawArrowsWithColors(const std::string &topic_name,
+                                     const std::vector<Eigen::Vector3d> &start_points,
+                                     const std::vector<Eigen::Vector3d> &end_points,
+                                     const std::vector<Eigen::Vector3d> &scales,
+                                     const std::vector<Eigen::Vector4d> &colors,
+                                     double opacity = -1.0,
+                                     const std::string &frame_id = CONFIG::default_frame_id,
+                                     int id = 74514);
 
-    
     /**
      * @brief 绘制一条折线。
      * @param topic_name string - 发布的主题名称。
@@ -348,14 +471,14 @@ public:
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      * @param id int - 折线标识符（默认为134514）。
      */
-    static void drawLineStrip(const std::string& topic_name,
-                          const std::vector<Eigen::Vector3d>& points,
-                          double width,
-                          Eigen::Vector4d color = LCOLOR::YELLOW,
-                          double opacity = -1.0,
-                          std::string frame_id = CONFIG::default_frame_id,
-                          int id = 134514);
-    
+    static void drawLineStrip(const std::string &topic_name,
+                              const std::vector<Eigen::Vector3d> &points,
+                              double width,
+                              Eigen::Vector4d color = LCOLOR::YELLOW,
+                              double opacity = -1.0,
+                              std::string frame_id = CONFIG::default_frame_id,
+                              int id = 134514);
+
     /**
      * @brief 绘制线段群。
      * @param topic_name string - 发布的主题名称。
@@ -366,13 +489,13 @@ public:
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      * @param id int - 线段标识符（默认为139514）。
      */
-    static void drawLineList(    const std::string& topic_name,
-                                 const std::vector<Eigen::Vector3d>& points,
-                                 double width,
-                                 Eigen::Vector4d color = LCOLOR::YELLOW,
-                                 double opacity = -1.0,
-                                 std::string frame_id = CONFIG::default_frame_id,
-                                 int id = 139514);
+    static void drawLineList(const std::string &topic_name,
+                             const std::vector<Eigen::Vector3d> &points,
+                             double width,
+                             Eigen::Vector4d color = LCOLOR::YELLOW,
+                             double opacity = -1.0,
+                             std::string frame_id = CONFIG::default_frame_id,
+                             int id = 139514);
 
     /**
      * @brief 绘制具有不同颜色的线段列表。
@@ -384,12 +507,12 @@ public:
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      * @param id int - 线段的标识号（默认为64514）。
      */
-    static void drawLineListWithColors(const std::string& topic_name,
-                                       const std::vector<Eigen::Vector3d>& points,
-                                       const std::vector<Eigen::Vector4d>& colors,
+    static void drawLineListWithColors(const std::string &topic_name,
+                                       const std::vector<Eigen::Vector3d> &points,
+                                       const std::vector<Eigen::Vector4d> &colors,
                                        double width,
                                        double opacity = -1.0,
-                                       const std::string& frame_id = CONFIG::default_frame_id,
+                                       const std::string &frame_id = CONFIG::default_frame_id,
                                        int id = 64514);
 
     /**
@@ -402,14 +525,14 @@ public:
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      * @param id int - 多边形标识符（默认为144514）。
      */
-    static void draw2DPolygon_MARKER(const std::string& topic_name,
-                                     const std::vector<Eigen::Vector3d>& vertices,
+    static void draw2DPolygon_MARKER(const std::string &topic_name,
+                                     const std::vector<Eigen::Vector3d> &vertices,
                                      Eigen::Vector4d color = LCOLOR::YELLOW,
-                                     double stroke_width    = 0.1,
-                                     double opacity  = -1.0,
+                                     double stroke_width = 0.1,
+                                     double opacity = -1.0,
                                      std::string frame_id = CONFIG::default_frame_id,
                                      int id = 144514);
-    
+
     /**
      * @brief 绘制一个2D多边形。
      * @param topic_name string - 发布的主题名称。
@@ -420,17 +543,16 @@ public:
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      * @param id int - 多边形标识符（默认为144514）。
      */
-    static void draw2DPolygon_POLYGON(const std::string& topic_name,
-                                     const std::vector<Eigen::Vector3d>& vertices,
-                                     Eigen::Vector4d color = LCOLOR::YELLOW,
-                                     double stroke_width    = 0.1,
-                                     double opacity  = -1.0,
-                                     std::string frame_id = CONFIG::default_frame_id,
-                                     int id = 144514);
-    
+    static void draw2DPolygon_POLYGON(const std::string &topic_name,
+                                      const std::vector<Eigen::Vector3d> &vertices,
+                                      Eigen::Vector4d color = LCOLOR::YELLOW,
+                                      double stroke_width = 0.1,
+                                      double opacity = -1.0,
+                                      std::string frame_id = CONFIG::default_frame_id,
+                                      int id = 144514);
 
-    static std::function<void(const std::string&, const std::vector<Eigen::Vector3d>&, Eigen::Vector4d, double, double , std::string, int)> draw2DPolygon;
-    
+    static std::function<void(const std::string &, const std::vector<Eigen::Vector3d> &, Eigen::Vector4d, double, double, std::string, int)> draw2DPolygon;
+
     /**
      * @brief 绘制一个2D矩形。
      * @param topic_name string - 发布的主题名称。
@@ -444,32 +566,32 @@ public:
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      * @param id int - 矩形标识符（默认为154514）。
      */
-    static void draw2DRect( const std::string& topic_name,
-                            const Eigen::Vector3d& top_left,
-                            double width, double height,
-                            double rot_z = 0.0,
-                            Eigen::Vector4d color = LCOLOR::YELLOW,
-                            double stroke_width    = 0.1,
-                            double opacity = -1.0,
-                            std::string frame_id = CONFIG::default_frame_id,
-                            int id = 154514);
+    static void draw2DRect(const std::string &topic_name,
+                           const Eigen::Vector3d &top_left,
+                           double width, double height,
+                           double rot_z = 0.0,
+                           Eigen::Vector4d color = LCOLOR::YELLOW,
+                           double stroke_width = 0.1,
+                           double opacity = -1.0,
+                           std::string frame_id = CONFIG::default_frame_id,
+                           int id = 154514);
 
     template <typename PAIRLINE>
-    static void drawpairline( const std::string& topic_name,const PAIRLINE& pairline,
-                            Eigen::Vector4d color = LCOLOR::YELLOW,
-                            double stroke_width    = 0.1,
-                            double opacity = -1.0,
-                            std::string frame_id = CONFIG::default_frame_id,
-                            int id = 14514)
-                            {
-        ros::Publisher& publisher = Livz::getInstance().getPublisher<visualization_msgs::Marker>(topic_name);
+    static void drawpairline(const std::string &topic_name, const PAIRLINE &pairline,
+                             Eigen::Vector4d color = LCOLOR::YELLOW,
+                             double stroke_width = 0.1,
+                             double opacity = -1.0,
+                             std::string frame_id = CONFIG::default_frame_id,
+                             int id = 14514)
+    {
+        ros::Publisher &publisher = Livz::getInstance().getPublisher<visualization_msgs::Marker>(topic_name);
         visualization_msgs::Marker marker;
         marker.header.frame_id = frame_id;
         marker.type = visualization_msgs::Marker::LINE_LIST;
         marker.action = visualization_msgs::Marker::ADD;
-        marker.pose.position.x =0;
-        marker.pose.position.y =0;
-        marker.pose.position.z =0;
+        marker.pose.position.x = 0;
+        marker.pose.position.y = 0;
+        marker.pose.position.z = 0;
         marker.pose.orientation.w = 1;
         marker.pose.orientation.x = 0;
         marker.pose.orientation.y = 0;
@@ -483,7 +605,8 @@ public:
         marker.color.a = (opacity >= 0.0 && opacity <= 1.0) ? opacity : color(3);
         marker.color.a = (marker.color.a >= 0.0 && marker.color.a <= 0.1) ? 0 : marker.color.a;
         marker.points.resize(2 * pairline.size());
-        for (size_t i = 0; i < pairline.size(); ++i) {
+        for (size_t i = 0; i < pairline.size(); ++i)
+        {
             marker.points[2 * i + 0].x = pairline[i].first[0];
             marker.points[2 * i + 0].y = pairline[i].first[1];
             marker.points[2 * i + 0].z = pairline[i].first[2];
@@ -493,7 +616,6 @@ public:
         }
         publisher.publish(marker);
     }
-
 
     /**
      * @brief 绘制一个2D圆。
@@ -507,16 +629,16 @@ public:
      * @param id int - 圆的标识符（默认为164514）。
      * @param samples int - 圆的采样密度，决定圆的平滑度（默认为100）。
      */
-    static void draw2DCircle(const std::string& topic_name,
-                             const Eigen::Vector3d& center,
+    static void draw2DCircle(const std::string &topic_name,
+                             const Eigen::Vector3d &center,
                              double radius,
                              Eigen::Vector4d color = LCOLOR::YELLOW,
-                             double stroke_width    = 0.1,
+                             double stroke_width = 0.1,
                              double opacity = -1.0,
                              std::string frame_id = CONFIG::default_frame_id,
                              int id = 164514,
                              int samples = 100);
-    
+
     /**
      * @brief 绘制一个2D椭圆。
      * @param topic_name string - 发布的主题名称。
@@ -531,17 +653,16 @@ public:
      * @param id int - 椭圆的标识符（默认为174514）。
      * @param samples int - 椭圆的采样密度，决定椭圆的平滑度（默认为100）。
      */
-    static void draw2DEllipse(const std::string& topic_name,
-                          const Eigen::Vector3d& center,
-                          double major_axis, double minor_axis, 
-                          double rot_z = 0.0,
-                          Eigen::Vector4d color = LCOLOR::YELLOW,
-                          double stroke_width    = 0.1,
-                          double opacity = -1.0,
-                          std::string frame_id = CONFIG::default_frame_id,
-                          int id = 174514,
-                          int samples = 100);
-    
+    static void draw2DEllipse(const std::string &topic_name,
+                              const Eigen::Vector3d &center,
+                              double major_axis, double minor_axis,
+                              double rot_z = 0.0,
+                              Eigen::Vector4d color = LCOLOR::YELLOW,
+                              double stroke_width = 0.1,
+                              double opacity = -1.0,
+                              std::string frame_id = CONFIG::default_frame_id,
+                              int id = 174514,
+                              int samples = 100);
 
     /**
      * @brief 绘制一个2D圆锥,默认锥轴沿x轴正向。
@@ -557,18 +678,18 @@ public:
      * @param id int - 标识符（默认为184514）。
      * @param samples int - 采样密度，决定圆锥的平滑度（默认为40）。
      */
-    static void draw2DCone(const std::string& topic_name,
-                          const Eigen::Vector3d& center,
-                          double radius,
-                          double fov,
-                          double rot_z = 0.0,
-                          Eigen::Vector4d color = LCOLOR::YELLOW,
-                          double stroke_width    = 0.1,
-                          double opacity = -1.0,
-                          std::string frame_id = CONFIG::default_frame_id,
-                          int id = 184514,
-                          int samples = 40);
-    
+    static void draw2DCone(const std::string &topic_name,
+                           const Eigen::Vector3d &center,
+                           double radius,
+                           double fov,
+                           double rot_z = 0.0,
+                           Eigen::Vector4d color = LCOLOR::YELLOW,
+                           double stroke_width = 0.1,
+                           double opacity = -1.0,
+                           std::string frame_id = CONFIG::default_frame_id,
+                           int id = 184514,
+                           int samples = 40);
+
     /**
      * @brief 绘制点云。
      * @param topic_name string - 发布的主题名称。
@@ -576,31 +697,31 @@ public:
      * @param color Eigen::Vector4d - 点的颜色（默认为白色）。
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      */
-    static void drawPointcloud(const std::string& topic_name,
-                              pcl::PointCloud<pcl::PointXYZ>& cloud,
-                              Eigen::Vector4d color = LCOLOR::WHITE,
-                              std::string frame_id  = CONFIG::default_frame_id);
-    
+    static void drawPointcloud(const std::string &topic_name,
+                               pcl::PointCloud<pcl::PointXYZ> &cloud,
+                               Eigen::Vector4d color = LCOLOR::WHITE,
+                               std::string frame_id = CONFIG::default_frame_id);
+
     /**
      * @brief 绘制彩色点云。
      * @param topic_name string - 发布的主题名称。
      * @param cloud pcl::PointCloud<pcl::PointXYZRGB>::Ptr - 已着色的点云数据。
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      */
-    static void drawPointcloudRGB( const std::string& topic_name,
-                                pcl::PointCloud<pcl::PointXYZRGB>& cloud,
-                                std::string frame_id = CONFIG::default_frame_id );
-    
+    static void drawPointcloudRGB(const std::string &topic_name,
+                                  pcl::PointCloud<pcl::PointXYZRGB> &cloud,
+                                  std::string frame_id = CONFIG::default_frame_id);
+
     /**
      * @brief 绘制带强度信息点云。
      * @param topic_name string - 发布的主题名称。
      * @param cloud pcl::PointCloud<pcl::PointXYZI>::Ptr - 携带强度信息的点云。
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      */
-    static void drawPointcloudI( const std::string& topic_name,
-                                pcl::PointCloud<pcl::PointXYZI>& cloud,
-                                std::string frame_id = CONFIG::default_frame_id );
-    
+    static void drawPointcloudI(const std::string &topic_name,
+                                pcl::PointCloud<pcl::PointXYZI> &cloud,
+                                std::string frame_id = CONFIG::default_frame_id);
+
     /**
      * @brief 绘制自定义着色点云。
      * @param topic_name string - 发布的主题名称。
@@ -608,11 +729,11 @@ public:
      * @param shader ShaderFunction - 自定义的着色器函数。
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      */
-    static void drawPointcloudWithShader( const std::string& topic_name,
-                                        pcl::PointCloud<pcl::PointXYZ>& cloud,
-                                        ShaderFunction shader,
-                                        std::string frame_id = CONFIG::default_frame_id );
-    
+    static void drawPointcloudWithShader(const std::string &topic_name,
+                                         pcl::PointCloud<pcl::PointXYZ> &cloud,
+                                         ShaderFunction shader,
+                                         std::string frame_id = CONFIG::default_frame_id);
+
     /**
      * @brief 绘制参数化曲线。
      * @param topic_name string - 发布的主题名称。
@@ -625,17 +746,17 @@ public:
      * @param id int - 曲线的标识号（默认为 194514）。
      * @param sample_gap double - 空间采样间隔（默认为 0.1， 可能会不准）。
      */
-    static void drawParametricCurve( const std::string& topic_name,
-                                     ParametricCurveFunction curve_function,
-                                     Eigen::Vector2d interval,
-                                     Eigen::Vector4d color = LCOLOR::GOLD,
-                                     double stroke_width    = 0.1,
-                                     double opacity = -1.0,
-                                     std::string frame_id = CONFIG::default_frame_id,
-                                     int id = 194514,
-                                     double sample_gap = 0.1 );
-    
-   /**
+    static void drawParametricCurve(const std::string &topic_name,
+                                    ParametricCurveFunction curve_function,
+                                    Eigen::Vector2d interval,
+                                    Eigen::Vector4d color = LCOLOR::GOLD,
+                                    double stroke_width = 0.1,
+                                    double opacity = -1.0,
+                                    std::string frame_id = CONFIG::default_frame_id,
+                                    int id = 194514,
+                                    double sample_gap = 0.1);
+
+    /**
      * @brief 绘制始终朝向视口的文字。
      * @param topic_name string - 发布的主题名称。
      * @param text string - 要绘制的文本内容。
@@ -646,14 +767,14 @@ public:
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      * @param id int - 文字的标识号（默认为 204514）。
      */
-    static void drawViewText( const std::string& topic_name,
-                              const std::string& text,
-                              Eigen::Vector3d position = Eigen::Vector3d(0,0,5),
-                              double size = 1,
-                              Eigen::Vector4d color = LCOLOR::GOLD,
-                              double opacity = -1.0,
-                              std::string frame_id = CONFIG::default_frame_id,
-                              int id = 204514);
+    static void drawViewText(const std::string &topic_name,
+                             const std::string &text,
+                             Eigen::Vector3d position = Eigen::Vector3d(0, 0, 5),
+                             double size = 1,
+                             Eigen::Vector4d color = LCOLOR::GOLD,
+                             double opacity = -1.0,
+                             std::string frame_id = CONFIG::default_frame_id,
+                             int id = 204514);
 
     /**
      * @brief 绘制不同颜色的三角面。
@@ -664,12 +785,12 @@ public:
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      * @param id int - 文字的标识号（默认为 904514）。
      */
-    static void renderTrianglesWithColors(const std::string& topic_name, 
-                                 Eigen::Matrix3Xd &mesh_vertexes, 
-                                 const std::vector<Eigen::Vector4d>& colors, 
-                                 double opacity = -1.0,
-                                 std::string frame_id = CONFIG::default_frame_id,
-                                 int id = 904514);
+    static void renderTrianglesWithColors(const std::string &topic_name,
+                                          Eigen::Matrix3Xd &mesh_vertexes,
+                                          const std::vector<Eigen::Vector4d> &colors,
+                                          double opacity = -1.0,
+                                          std::string frame_id = CONFIG::default_frame_id,
+                                          int id = 904514);
 
     /**
      * @brief 绘制三角网格体。
@@ -680,12 +801,12 @@ public:
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      * @param id int - 文字的标识号（默认为 214514）。
      */
-    static void renderTriangleMesh(const std::string& topic_name, 
-                                 Eigen::Matrix3Xd &mesh_vertexes, 
-                                 Eigen::Vector4d color = LCOLOR::AZURE, 
-                                 double opacity = -1.0,
-                                 std::string frame_id = CONFIG::default_frame_id,
-                                 int id = 214514);
+    static void renderTriangleMesh(const std::string &topic_name,
+                                   Eigen::Matrix3Xd &mesh_vertexes,
+                                   Eigen::Vector4d color = LCOLOR::AZURE,
+                                   double opacity = -1.0,
+                                   std::string frame_id = CONFIG::default_frame_id,
+                                   int id = 214514);
 
     /**
      * @brief 绘制三角网格体以及边棱（内测版本API）
@@ -697,16 +818,16 @@ public:
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      * @param id int - 文字的标识号（默认为 531241）。
      */
-    static void renderTriangleMeshWithEdges(const std::string& meshtopic, 
-                                            const std::string& edgetopic, 
-                                            Eigen::MatrixXd &U, 
-                                            Eigen::MatrixXi &G, 
-                                            Eigen::Vector4d color= LCOLOR::AZURE, 
+    static void renderTriangleMeshWithEdges(const std::string &meshtopic,
+                                            const std::string &edgetopic,
+                                            Eigen::MatrixXd &U,
+                                            Eigen::MatrixXi &G,
+                                            Eigen::Vector4d color = LCOLOR::AZURE,
                                             double opacity = -1.0,
-                                            std::string frame_id=CONFIG::default_frame_id,
-                                            int id=531241);
-    
-     /**
+                                            std::string frame_id = CONFIG::default_frame_id,
+                                            int id = 531241);
+
+    /**
      * @brief 绘制三角网格体的棱。
      * @param topic_name string - 发布的主题名称。
      * @param mesh_vertexes Eigen::Matrix3Xd - 网格体顶点信息（按列排布）。
@@ -716,14 +837,14 @@ public:
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      * @param id int - 文字的标识号（默认为 224514）。
      */
-    static void renderTriangleMeshEdges( const std::string& topic_name, 
-                                        Eigen::Matrix3Xd &mesh_vertexes, 
-                                        Eigen::Vector4d color = LCOLOR::BLACK, 
+    static void renderTriangleMeshEdges(const std::string &topic_name,
+                                        Eigen::Matrix3Xd &mesh_vertexes,
+                                        Eigen::Vector4d color = LCOLOR::BLACK,
                                         double stroke_width = 0.1,
                                         double opacity = -1.0,
                                         std::string frame_id = CONFIG::default_frame_id,
                                         int id = 224514);
-    
+
     /**
      * @brief 绘制二元函 z = f(u,v)（参数曲面）。
      * @param topic_name string - 发布的主题名称。
@@ -737,17 +858,16 @@ public:
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      * @param id int - 标识号（默认为 224514）。
      */
-    static void renderSurface(const std::string& topic_name, 
-                                        ParametricSurfaceFunction surf_function,
-                                        Eigen::Vector2d u_range =  Eigen::Vector2d(-1,1),
-                                        Eigen::Vector2d v_range =  Eigen::Vector2d(-1,1),
-                                        double u_res = 0.25,
-                                        double v_res = 0.25,
-                                        Eigen::Vector4d color = LCOLOR::GOLD, 
-                                        double opacity = -1.0,
-                                        std::string frame_id = CONFIG::default_frame_id,
-                                        int id = 234514);
-    
+    static void renderSurface(const std::string &topic_name,
+                              ParametricSurfaceFunction surf_function,
+                              Eigen::Vector2d u_range = Eigen::Vector2d(-1, 1),
+                              Eigen::Vector2d v_range = Eigen::Vector2d(-1, 1),
+                              double u_res = 0.25,
+                              double v_res = 0.25,
+                              Eigen::Vector4d color = LCOLOR::GOLD,
+                              double opacity = -1.0,
+                              std::string frame_id = CONFIG::default_frame_id,
+                              int id = 234514);
 
     /**
      * @brief 可视化向量场。
@@ -763,18 +883,18 @@ public:
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      * @param id int - 标识号（默认为 244514）。
      */
-    static void renderVectorField(  const std::string& topic_name, 
-                                    VectorField field_function,
-                                    Eigen::Vector3d box_min =  Eigen::Vector3d(-1,-1,-1),
-                                    Eigen::Vector3d box_max =  Eigen::Vector3d( 1, 1, 1),
-                                    Eigen::Vector3d resolution = Eigen::Vector3d( 0.2, 0.2, 0.2),
-                                    const bool only_2d      = false,
-                                    Eigen::Vector4d color_min = LCOLOR::RED, 
-                                    Eigen::Vector4d color_max = LCOLOR::GOLD, 
-                                    double opacity = -1.0,
-                                    std::string frame_id = CONFIG::default_frame_id,
-                                    int id = 244514);
-    
+    static void renderVectorField(const std::string &topic_name,
+                                  VectorField field_function,
+                                  Eigen::Vector3d box_min = Eigen::Vector3d(-1, -1, -1),
+                                  Eigen::Vector3d box_max = Eigen::Vector3d(1, 1, 1),
+                                  Eigen::Vector3d resolution = Eigen::Vector3d(0.2, 0.2, 0.2),
+                                  const bool only_2d = false,
+                                  Eigen::Vector4d color_min = LCOLOR::RED,
+                                  Eigen::Vector4d color_max = LCOLOR::GOLD,
+                                  double opacity = -1.0,
+                                  std::string frame_id = CONFIG::default_frame_id,
+                                  int id = 244514);
+
     /**
      * @brief 可视化向量场的流线。
      * @param topic_name string - 发布的主题名称。
@@ -791,44 +911,39 @@ public:
      * @param frame_id string - 参考坐标系（默认为"/map"）。
      * @param id int - 标识号（默认为 244514）。
      */
-    static void renderStreamLines(  const std::string& topic_name, 
-                                    VectorField field_function,
-                                    Eigen::Vector3d box_min =  Eigen::Vector3d(-1,-1,-1),
-                                    Eigen::Vector3d box_max =  Eigen::Vector3d( 1, 1, 1),
-                                    Eigen::Vector3d resolution = Eigen::Vector3d( 0.2, 0.2, 0.2),
-                                    int start_step            = 0,
-                                    int end_step              = 10,
-                                    const bool only_2d        = false,
-                                    Eigen::Vector4d color_min = LCOLOR::RED, 
-                                    Eigen::Vector4d color_max = LCOLOR::GOLD, 
-                                    double opacity = -1.0,
-                                    std::string frame_id = CONFIG::default_frame_id,
-                                    int id = 244514);
-
+    static void renderStreamLines(const std::string &topic_name,
+                                  VectorField field_function,
+                                  Eigen::Vector3d box_min = Eigen::Vector3d(-1, -1, -1),
+                                  Eigen::Vector3d box_max = Eigen::Vector3d(1, 1, 1),
+                                  Eigen::Vector3d resolution = Eigen::Vector3d(0.2, 0.2, 0.2),
+                                  int start_step = 0,
+                                  int end_step = 10,
+                                  const bool only_2d = false,
+                                  Eigen::Vector4d color_min = LCOLOR::RED,
+                                  Eigen::Vector4d color_max = LCOLOR::GOLD,
+                                  double opacity = -1.0,
+                                  std::string frame_id = CONFIG::default_frame_id,
+                                  int id = 244514);
 
 private:
     Livz() {}
-    static Livz& getInstance();
+    static Livz &getInstance();
 
     ros::Timer tick_timer;
     ros::Timer cu_tick_timer;
-    void LivzTick(const ros::TimerEvent& event);
-    void LivzCusUpdaterTick(const ros::TimerEvent& event);
+    void LivzTick(const ros::TimerEvent &event);
+    void LivzCusUpdaterTick(const ros::TimerEvent &event);
 
     template <typename T = visualization_msgs::Marker>
-    static ros::Publisher& getPublisher(const std::string& topic_name);
-    static bool findPublisher(const std::string& topic_name, PublisherInfo& finded_publisher);
+    static ros::Publisher &getPublisher(const std::string &topic_name);
+    static bool findPublisher(const std::string &topic_name, PublisherInfo &finded_publisher);
 
 private:
-
     ros::NodeHandle nh_;
-    std::map<std::string, PublisherInfo>    publishers_;
-    std::vector<LAnimateTaskWrapper>        animate_tasks_;
-    std::vector<LCustomUpdater>             customed_updaters_;
+    std::map<std::string, PublisherInfo> publishers_;
+    std::vector<LAnimateTaskWrapper> animate_tasks_;
+    std::vector<LCustomUpdater> customed_updaters_;
     static const std::string version_;
-
 };
 
 #endif // LROSVIS_LIB_H
-
-

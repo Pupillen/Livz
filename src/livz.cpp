@@ -118,7 +118,7 @@ void Livz::DelayAccordingtoAnimate(const LAnimateParam ani_param)
     Livz::Delay( 1000*ani_param.duration_ );
 }
 
-void Livz::init(ros::NodeHandle& nh) {
+void Livz::init(const ros::NodeHandle& nh) {
     getInstance().nh_ = nh;
     PRINT_COLOR_TEXT("Welcome to use Livz! ", YELLOW);
     PRINT_COLOR_TEXT("version： "<< version_ , YELLOW);
